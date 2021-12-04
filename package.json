@@ -19,7 +19,8 @@
   "homepage": "https://github.com/getir-nodejs-bootcamp/getir-nodejs-bootcamp-week-3-assignment-suleymankalkan#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
