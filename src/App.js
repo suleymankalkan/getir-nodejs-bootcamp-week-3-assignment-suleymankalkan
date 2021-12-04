@@ -5,6 +5,10 @@ require('dotenv').config();
 
 const app = express();
 
+// Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Define Routers
 const indexRouter = require('./routes/index');
 const postsRouter = require('./routes/posts');
