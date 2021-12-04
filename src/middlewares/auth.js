@@ -10,11 +10,11 @@ const verifyToken = (req, res, next) => {
       if(!err) {
           next();
       } else {
-        res.sendStatus(403);
+        res.sendStatus(401);
       }
     });
   } else {
-    res.sendStatus(403);
+    res.sendStatus(401);
   }
 }
 
