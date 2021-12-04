@@ -1,5 +1,6 @@
 const express = require('express');
 const auth = require('./middlewares/auth');
+const logger = require('./middlewares/logger');
 
 //Loading env variables
 require('dotenv').config();
@@ -9,6 +10,7 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(logger); // Log the requests
 
 // Define Routers
 const indexRouter = require('./routes/index');
