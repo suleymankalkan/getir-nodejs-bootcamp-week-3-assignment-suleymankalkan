@@ -1,18 +1,15 @@
 const app = require('express')();
+const posts = require('../models/posts')
 
 // GET	/posts
 app.get('/', (req, res) => {
-    res.send('GET /posts');
+    res.json(posts);
 });
 
 // GET	/posts/1
 app.get('/:id', (req, res) => {
-    res.send(`GET /posts/${req.params.id}`);
-});
-
-// GET	/posts/1/comments
-app.get('/:id/comments', (req, res) => {
-  res.send(`GET /posts/${req.params.id}/comments`);
+    let message = posts.find( p => p.id == req.params.id)
+    message ? res.send(message) : res.status(404).send('Not found');
 });
 
 // POST	/posts
