@@ -8,7 +8,6 @@ const verifyToken = (req, res, next) => {
     // Verify the token
     jwt.verify(bearerHeader, process.env.SECRETKEY, (err,authData)=>{
       if(!err) {
-          //res.setHeader('authData', authData);
           next();
       } else {
         res.sendStatus(403);
