@@ -14,7 +14,15 @@ app.get('/:id', (req, res) => {
 
 // POST	/posts
 app.post('/', (req, res) => {
-  res.send('POST /posts');
+  let {userId, id, title, body} = req.body;
+  let isDuplicate = posts.find( p => p.id == req.body.id);
+
+  if(isDuplicate){
+    res.status(409).send('exists');
+  } else {
+    posts.push({userId, id, title, body});
+    res.status(201).json({userId, id, title, body});
+  }
 });
 
 // PUT	/posts/1
@@ -29,7 +37,13 @@ app.patch('/:id', (req, res) => {
 
 // DELETE	/posts/1
 app.delete('/:id', (req, res) => {
-  res.send(`DELETE /posts/${req.params.id}`);
+  let isExists = posts.find( p => p.id == req.params.id);
+  if(isExists){
+    let removePost = posts.pop(req.params.id);
+    res.json(removePost)
+  } else {
+    res.sendStatus(404);
+  }
 });
 
 module.exports = app;
